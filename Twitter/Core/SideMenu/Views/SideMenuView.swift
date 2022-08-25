@@ -26,16 +26,18 @@ struct SideMenuView: View {
             
             VStack(spacing: 16) {
                 ForEach(SideViewModel.allCases, id: \.rawValue) { viewModel in
-                    HStack(spacing: 16) {
-                        Image(systemName: viewModel.imageName)
-                            .foregroundColor(.gray)
-                            .font(.subheadline)
+                    if viewModel == .profile {
+                        NavigationLink {
+                            ProfileView()
+                        } label: {
+                            SideMenuRowView(viewModel: viewModel)
+                        }
+                        .foregroundColor(.black)
+                    } else if viewModel == .bookmarks {
                         
-                        Text(viewModel.title)
-                            .font(.subheadline)
-                        Spacer()
+                    } else {
+                        SideMenuRowView(viewModel: viewModel)
                     }
-                    .frame(height: 40)
                 }
             }
             .padding(.vertical)
