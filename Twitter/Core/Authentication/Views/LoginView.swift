@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct LoginView: View {
+    @State private var email = ""
+    @State private var password = ""
+    
     var body: some View {
         VStack {
             VStack(alignment: .leading) {
@@ -27,7 +30,59 @@ struct LoginView: View {
             .foregroundColor(.white)
             .clipShape(RoundedShape(corners: [.bottomRight]))
             
+            VStack(spacing: 40) {
+                TextField("Email", text: $email)
+                TextField("Password", text: $password)
+            }
+            .padding(.top, 44)
+            .padding(.horizontal, 20)
+            
+            HStack {
+                Spacer()
+                NavigationLink {
+                    Text("hello world")
+                } label: {
+                   Text("Forgot Password?")
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color(.systemBlue))
+                        .padding(.trailing)
+                        .padding(.top)
+                }
+            }
+            
+            Button {
+                
+            } label: {
+                Text("Sign In")
+                    .font(.headline)
+                    .foregroundColor(Color(.white))
+                    .frame(width: 340, height: 60)
+                    .background(Color(.systemBlue))
+                    .clipShape(Capsule())
+                    .padding(.top)
+            }
+
+            
             Spacer()
+            
+            HStack {
+                NavigationLink {
+                    
+                } label: {
+                    Text("Don't have an account?")
+                        .fontWeight(.semibold)
+                        .foregroundColor(Color(.systemBlue))
+                }
+                
+                NavigationLink {
+                    
+                } label: {
+                    Text("Sign Up")
+                        .fontWeight(.bold)
+                        .foregroundColor(Color(.systemBlue))
+                }
+            }
+            .padding(.vertical)
         }
         .ignoresSafeArea()
     }
