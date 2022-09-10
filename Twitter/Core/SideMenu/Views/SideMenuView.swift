@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct SideMenuView: View {
+    @EnvironmentObject var authViewModel: AuthViewModel
+    
     var body: some View {
         VStack(alignment: .leading) {
             VStack(alignment: .leading) {
@@ -35,6 +37,8 @@ struct SideMenuView: View {
                         .foregroundColor(.black)
                     } else if viewModel == .bookmarks {
                         
+                    } else if viewModel == .logout {
+                        authViewModel.signOut()
                     } else {
                         SideMenuRowView(viewModel: viewModel)
                     }

@@ -10,6 +10,7 @@ import SwiftUI
 struct LoginView: View {
     @State private var email = ""
     @State private var password = ""
+    @EnvironmentObject var authViewModel: AuthViewModel
     
     var body: some View {
         VStack {
@@ -42,7 +43,7 @@ struct LoginView: View {
                 NavigationLink {
                     Text("hello world")
                 } label: {
-                   Text("Forgot Password?")
+                    Text("Forgot Password?")
                         .fontWeight(.semibold)
                         .foregroundColor(Color(.systemBlue))
                         .padding(.trailing)
@@ -51,7 +52,7 @@ struct LoginView: View {
             }
             
             Button {
-                
+                authViewModel.login(withEmail: email, password: password)
             } label: {
                 Text("Sign In")
                     .font(.headline)
@@ -61,28 +62,24 @@ struct LoginView: View {
                     .clipShape(Capsule())
                     .padding(.top)
             }
-
+            
             
             Spacer()
             
-            HStack {
-                NavigationLink {
-                    
-                } label: {
+            NavigationLink {
+                RegistrationView()
+            } label: {
+                HStack {
                     Text("Don't have an account?")
                         .fontWeight(.semibold)
                         .foregroundColor(Color(.systemBlue))
-                }
-                
-                NavigationLink {
                     
-                } label: {
                     Text("Sign Up")
                         .fontWeight(.bold)
                         .foregroundColor(Color(.systemBlue))
                 }
             }
-            .padding(.vertical)
+            .padding(.bottom, 32)
         }
         .ignoresSafeArea()
     }
