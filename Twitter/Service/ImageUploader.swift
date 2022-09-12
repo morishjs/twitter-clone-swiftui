@@ -8,10 +8,9 @@
 import Foundation
 import FirebaseStorage
 import UIKit
-import SwiftUI
 
 struct ImageUploader {
-    func upload(image: Image, completion: @escaping(_: String) -> Void) {
+    func upload(image: UIImage, completion: @escaping(_: String) -> Void) {
         guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
         
         let fileName = NSUUID().uuidString
