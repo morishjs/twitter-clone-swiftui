@@ -17,7 +17,7 @@ class AuthViewModel: ObservableObject {
     
     func login(withEmail: String, password: String) {
         Auth.auth().signIn(withEmail: withEmail, password: password) { result, error in
-            if let error = error {
+            if error != nil {
                 return
             }
             

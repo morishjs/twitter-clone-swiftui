@@ -68,6 +68,7 @@ struct LoginView: View {
             
             NavigationLink {
                 RegistrationView()
+                    .environmentObject(authViewModel)
             } label: {
                 HStack {
                     Text("Don't have an account?")

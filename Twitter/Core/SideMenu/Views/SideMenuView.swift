@@ -35,10 +35,12 @@ struct SideMenuView: View {
                             SideMenuRowView(viewModel: viewModel)
                         }
                         .foregroundColor(.black)
-                    } else if viewModel == .bookmarks {
-                        
                     } else if viewModel == .logout {
-                        authViewModel.signOut()
+                        Button {
+                            authViewModel.signOut()
+                        } label: {
+                            SideMenuRowView(viewModel: viewModel)
+                        }
                     } else {
                         SideMenuRowView(viewModel: viewModel)
                     }
