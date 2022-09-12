@@ -47,7 +47,7 @@ struct RegistrationView: View {
             Button {
                 authViewModel.register(withEmail: email, password: password, fullname: fullname, username: username)
             } label: {
-                Text("Sign In")
+                Text("Sign Up")
                     .font(.headline)
                     .foregroundColor(Color(.white))
                     .frame(width: 340, height: 60)
