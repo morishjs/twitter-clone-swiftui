@@ -14,7 +14,7 @@ struct ExploreView: View {
                 LazyVStack(alignment: .leading) {
                     ForEach(0 ... 25, id: \.self) { _ in
                         NavigationLink {
-                            ProfileView()
+//                            ProfileView()
                         } label: {
                             UserRowView()
                         }
