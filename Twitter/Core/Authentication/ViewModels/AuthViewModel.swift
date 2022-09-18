@@ -11,10 +11,14 @@ import UIKit
 
 class AuthViewModel: ObservableObject {
     @Published var userSession: FirebaseAuth.User?
+    @Published var didAuthenticated = false
+    
     private var tempUserSession: FirebaseAuth.User?
+    private let service = UserService()
     
     init() {
         userSession = Auth.auth().currentUser
+        
     }
     
     func login(withEmail: String, password: String) {
@@ -41,7 +45,7 @@ class AuthViewModel: ObservableObject {
                 Firestore.firestore().collection("users")
                     .document(user.uid)
                     .setData(data, completion: { _  in
-                       print("DEBUG")
+                        self.didAuthenticated = true
                     })
             }
         }

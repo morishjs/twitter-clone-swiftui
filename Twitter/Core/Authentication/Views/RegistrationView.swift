@@ -19,6 +19,8 @@ struct RegistrationView: View {
     
     var body: some View {
         VStack {
+            NavigationLink(destination: ProfilePhotoSelectorView().environmentObject(authViewModel), isActive: $authViewModel.didAuthenticated, label: {})
+            
             VStack(alignment: .leading) {
                 Text("Get Started.")
                     .font(.largeTitle)
